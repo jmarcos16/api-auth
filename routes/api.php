@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 
 Route::controller(RegisterController::class)->group(function () {
   Route::post('register', 'register');
@@ -24,4 +25,17 @@ Route::controller(UserController::class)->group(function () {
 
 Route::middleware('auth.sanctum')->group(function () {
   Route::resource('products', ProductController::class);
+});
+
+Route::get('teste-something-weird', function () {
+
+  $user =  new User;
+  $id = 10;
+
+  $user->givePermission('dedwdwadawafault', $id);
+
+  $user = User::find($id);
+
+  // dd($user->permission()->where('roles', 'dedwdwadawafault')->exists());
+  return response()->json(['test']);
 });
