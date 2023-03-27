@@ -21,6 +21,6 @@ class givePermission extends Actionable
     $permission =  Permission::where('roles', $permission)->firstOrFail();
 
     $user = User::findOrFail($id_user);
-    $user = $user->permission()->attach($permission);
+    $user = $user->permissions()->attach($permission);
   }
 }

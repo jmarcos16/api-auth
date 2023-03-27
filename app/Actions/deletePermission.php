@@ -18,6 +18,7 @@ class deletePermission extends Actionable
 
     $permission =  Permission::where('roles', $permission)->firstOrFail();
     $user = User::findOrFail($user_id);
-    $user = $user->permission()->detach($permission);
+
+    $user = $user->permissions()->detach($permission);
   }
 }
