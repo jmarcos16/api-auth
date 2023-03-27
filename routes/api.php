@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::controller(UserController::class)->group(function () {
   Route::post('update/{id}', 'update');
   Route::delete('delete/{id}', 'destroy');
 });
+
+
+Route::post('set-permission/{user_id}', [PermissionController::class, 'store']);
+Route::post('delete-permission/{user_id}', [PermissionController::class, 'destroy']);

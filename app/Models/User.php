@@ -48,8 +48,4 @@ class User extends Authenticatable
   {
     return $this->belongsToMany(Permission::class);
   }
-
-  public function givePermission(string $permission, int $id)
-  {
-  }
 }
