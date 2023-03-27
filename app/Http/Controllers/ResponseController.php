@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
 class ResponseController extends Controller
 {
-  public function success(string $message, Collection $data): string
+  public function success($result, string $message)
   {
-    $response['success'] = true;
-    $response['data'] = $data;
-    $response['message'] = $message;
+    $response = [
+      'success' => true,
+      'data'    => $result,
+      'message' => $message,
+    ];
 
     return response()->json($response, 200);
   }
 
-  public function error(string $message, mixed $errors = [], int $code = 500): string
+  public function error($error, $errorMessages = [], $code = 404)
   {
-    $response['success'] = false;
-    $response['arrors'] = $errors;
-    $response['message'] = $message;
+    $response = [
+      'success' => false,
+      'message' => $error,
+    ];
+
+
+    if (!empty($errorMessages)) {
+      $response['data'] = $errorMessages;
+    }
 
     return response()->json($response, $code);
   }
