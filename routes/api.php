@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,5 @@ Route::middleware('permission:default')->group(function () {
   Route::get('users', [UserController::class, 'index']);
   Route::get('user/{id}', [UserController::class, 'show']);
 });
+
+Route::post('authenticate', [AuthController::class, 'createToken']);
