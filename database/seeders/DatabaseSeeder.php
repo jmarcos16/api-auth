@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Permission;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,15 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
+    \App\Models\Permission::factory()->create([
+      'roles' => 'admin',
+    ]);
+
+    \App\Models\Permission::factory()->create([
+      'roles' => 'default',
+    ]);
+
+
     \App\Models\User::factory(10)->create();
 
     // \App\Models\User::factory()->create([
@@ -21,12 +31,6 @@ class DatabaseSeeder extends Seeder
     //     'email' => 'test@example.com',
     // ]);
 
-    Permission::factory()->create([
-      'roles' => 'admin',
-    ]);
 
-    Permission::factory()->create([
-      'roles' => 'default',
-    ]);
   }
 }
