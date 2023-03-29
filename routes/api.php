@@ -5,7 +5,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('permission:admin')->group(function () {
+Route::middleware('auth:sanctum', 'permission:admin')->group(function () {
   Route::post('set-permission/{user_id}', [PermissionController::class, 'store']);
   Route::post('delete-permission/{user_id}', [PermissionController::class, 'destroy']);
 
@@ -15,9 +15,9 @@ Route::middleware('permission:admin')->group(function () {
 });
 
 
-Route::middleware('permission:default')->group(function () {
-  Route::get('users', [UserController::class, 'index']);
+Route::middleware('auth:sanctum', 'permission:default')->group(function () {
   Route::get('user/{id}', [UserController::class, 'show']);
 });
 
 Route::post('authenticate', [AuthController::class, 'createToken']);
+Route::get('users', [UserController::class, 'index']);
