@@ -3,13 +3,17 @@
 namespace App\Http\Middleware;
 
 use App\Http\Controllers\ResponseController;
+use App\Support\ResponseApi;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckPermission extends ResponseController
+class CheckPermission
 {
+
+
+  use ResponseApi;
   /**
    * Handle an incoming request.
    *

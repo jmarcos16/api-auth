@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Actions\CreateAccessToken;
 use Illuminate\Http\Request;
 
-class AuthController extends ResponseController
+class AuthController extends Controller
 {
+
   public function createToken(Request $request)
   {
 

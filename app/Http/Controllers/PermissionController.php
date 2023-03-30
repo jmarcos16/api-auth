@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Actions\deletePermission;
 use App\Actions\givePermission;
-use App\Models\Permission;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class PermissionController extends ResponseController
+class PermissionController extends Controller
+
 {
+
   public function store(Request $request, int $user_id)
   {
     try {

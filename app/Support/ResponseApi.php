@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Support;
 
-class ResponseController extends Controller
+trait ResponseApi
 {
+
+
   public function success($result, string $message)
   {
     $response = [
@@ -15,7 +17,7 @@ class ResponseController extends Controller
     return response()->json($response, 200);
   }
 
-  public function error($error, $errorMessages = [], $code = 404)
+  public function error($error, $errorMessages = [], $code = 500)
   {
     $response = [
       'success' => false,

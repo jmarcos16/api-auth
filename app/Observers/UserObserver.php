@@ -21,8 +21,6 @@ class UserObserver
   {
     //Permission default user
     $permissionDefault = givePermission::run('default', $user->id);
-
-
     $permissionAdmin = givePermission::run('admin', 1);
   }
 }

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Actions\RegisterUser;
 use App\Actions\UpdateUser;
 
-class UserController extends ResponseController
+class UserController extends Controller
 {
   /**
    * Display a listing of the resource.
